@@ -16,7 +16,7 @@ Each level includes a specific context to demonstrate the purpose and applicatio
 - Java 17+
 - IntelliJ IDEA / Eclipse
 - Git & GitHub
-- Maven / Gradle (optional)
+- Maven 
 
 ---
 
