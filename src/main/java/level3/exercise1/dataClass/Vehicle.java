@@ -13,9 +13,6 @@ public abstract class Vehicle {
         return name;
     }
 
-    public String getType() {
-        return type;
-    }
 
     @Override
     public String toString() {

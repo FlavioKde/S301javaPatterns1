@@ -28,5 +28,7 @@ public class BuilderFactory {
         return new Contact(address, telephone);
     }
 
-
+    public AddressBookFactory getFactory() {
+        return factory;
+    }
 }

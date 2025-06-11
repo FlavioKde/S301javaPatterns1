@@ -9,11 +9,11 @@ public class SpanishFactory implements AddressBookFactory {
 
     @Override
     public Address createAddress(String addressData) {
-        return new USAddress(addressData);
+        return new SpanishAddress(addressData);
     }
 
     @Override
     public Telephone createTelephone(String number) throws BadTelefonException {
-        return new USPhone(number);
+        return new SpanishPhone(number);
     }
 }

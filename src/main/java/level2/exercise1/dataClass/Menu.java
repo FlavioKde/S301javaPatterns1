@@ -1,5 +1,9 @@
 package level2.exercise1.dataClass;
 
+import level2.exercise1.exception.BadTelefonException;
+import level2.exercise1.exception.CountryNotSupporterException;
+import level2.exercise1.interfaces.Address;
+import level2.exercise1.interfaces.Telephone;
 import level2.exercise1.logic.BuilderFactory;
 import java.util.Scanner;
 
@@ -40,20 +44,34 @@ public class Menu {
         System.out.print("Country (spain/usa/japan): ");
         String country = scanner.nextLine();
 
+        BuilderFactory builderFactory;
+        try {
+            builderFactory = new BuilderFactory(country);
+        } catch (CountryNotSupporterException e) {
+            System.out.println("Country not supporter " + e.getMessage());
+            return;
+        }
+
         System.out.print("Telephone: ");
         String phoneNumber = scanner.nextLine();
+
+        Telephone telephone;
+        try {
+            telephone = builderFactory.getFactory().createTelephone(phoneNumber);
+        } catch (BadTelefonException e) {
+            System.out.println("Invalid tel. number, please introduce another number " + e.getMessage());
+            return;
+        }
 
         System.out.print("Address: ");
         String addressData = scanner.nextLine();
 
-        try {
-            BuilderFactory builder = new BuilderFactory(country);
-            Contact contact = builder.buildContact(phoneNumber, addressData);
+        Address address;
+            address = builderFactory.getFactory().createAddress(addressData);
+
+            Contact contact = builderFactory.buildContact(phoneNumber, addressData);
             agenda.addContact(contact);
             System.out.println("Contact added successfully!");
-        } catch (Exception e) {
-            System.err.println("Error: " + e.getMessage());
-        }
     }
 
     private void showContacts() {

@@ -5,7 +5,7 @@ public class Plane extends Vehicle {
     private boolean curb;
     private boolean starUp;
 
-    public Plane(boolean accelerate, boolean curb, boolean starUp, String name,String type){
+    public Plane(String name,String type){
         super( name, type);
     }
     public void accelerate() {
